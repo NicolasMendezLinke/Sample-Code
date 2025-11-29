@@ -1,0 +1,20 @@
+name: Gradle CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Dar permissão ao gradlew (caso necessário)
+        run: chmod +x ./gradlew
+
+      - name: Rodando build do Gradle
+        run: ./gradlew build
